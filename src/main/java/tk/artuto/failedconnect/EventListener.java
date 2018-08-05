@@ -1,31 +1,45 @@
-/*    */ package tk.artuto.failedconnect;
-/*    */ 
-/*    */ import net.md_5.bungee.api.config.ServerInfo;
-/*    */ import net.md_5.bungee.api.connection.ProxiedPlayer;
-/*    */ import net.md_5.bungee.api.connection.Server;
-/*    */ import net.md_5.bungee.api.event.ServerKickEvent;
-/*    */ import net.md_5.bungee.api.plugin.Listener;
-/*    */ import net.md_5.bungee.event.EventHandler;
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ public class EventListener
-/*    */   implements Listener
-/*    */ {
-/*    */   @EventHandler
-/*    */   public void onServerKick(ServerKickEvent event)
-/*    */   {
-/* 18 */     ProxiedPlayer player = event.getPlayer();
-/* 19 */     ServerInfo start = player.getServer().getInfo();
-/*    */     
-/* 21 */     if (start.getName().equals("auth")) {
-/* 22 */       player.disconnect(event.getKickReasonComponent());
-/*    */     }
-/*    */   }
-/*    */ }
-
-
-/* Location:              C:\Users\artut\Google Drive\LL18\pl\Bungee\failedconnect-1.0-SNAPSHOT.jar!\tk\artuto\failedconnect\EventListener.class
- * Java compiler version: 8 (52.0)
- * JD-Core Version:       0.7.1
+/*
+ * Copyright (C) 2018 Artuto
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+package tk.artuto.failedconnect;
+
+import net.md_5.bungee.api.config.ServerInfo;
+import net.md_5.bungee.api.connection.ProxiedPlayer;
+import net.md_5.bungee.api.connection.Server;
+import net.md_5.bungee.api.event.ServerKickEvent;
+import net.md_5.bungee.api.plugin.Listener;
+import net.md_5.bungee.event.EventHandler;
+
+/**
+ * @author Artuto
+ */
+
+public class EventListener implements Listener
+{
+    @EventHandler
+    public void onServerKick(ServerKickEvent event)
+    {
+        ProxiedPlayer player = event.getPlayer();
+        Server server = player.getServer();
+        if(server==null)
+            return;
+        ServerInfo info = server.getInfo();
+
+        if(info.getName().equals("auth"))
+            player.disconnect(event.getKickReasonComponent());
+    }
+}

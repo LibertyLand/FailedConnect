@@ -1,29 +1,38 @@
-/*    */ package tk.artuto.failedconnect;
-/*    */ 
-/*    */ import java.util.logging.Logger;
-/*    */ import net.md_5.bungee.api.ProxyServer;
-/*    */ import net.md_5.bungee.api.plugin.Plugin;
-/*    */ import net.md_5.bungee.api.plugin.PluginManager;
-/*    */ 
-/*    */ 
-/*    */ public class FailedConnect
-/*    */   extends Plugin
-/*    */ {
-/*    */   public void onEnable()
-/*    */   {
-/* 14 */     getLogger().info("FailedConnect - Enabled");
-/* 15 */     getProxy().getPluginManager().registerListener(this, new EventListener());
-/*    */   }
-/*    */   
-/*    */ 
-/*    */   public void onDisable()
-/*    */   {
-/* 21 */     getLogger().info("FailedConnect - Disabled");
-/*    */   }
-/*    */ }
-
-
-/* Location:              C:\Users\artut\Google Drive\LL18\pl\Bungee\failedconnect-1.0-SNAPSHOT.jar!\tk\artuto\failedconnect\FailedConnect.class
- * Java compiler version: 8 (52.0)
- * JD-Core Version:       0.7.1
+/*
+ * Copyright (C) 2018 Artuto
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
+package tk.artuto.failedconnect;
+
+import net.md_5.bungee.api.plugin.Plugin;
+
+/**
+ * @author Artuto
+ */
+
+public class FailedConnect extends Plugin
+{
+    public void onEnable()
+    {
+        getLogger().info("FailedConnect - Enabled");
+        getProxy().getPluginManager().registerListener(this, new EventListener());
+    }
+
+    public void onDisable()
+    {
+        getLogger().info("FailedConnect - Disabled");
+    }
+}
